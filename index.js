@@ -1,9 +1,14 @@
 const express = require("express");
 const cors = require("cors");
-require("mongodb")
+const inventoryRouter = require("./Routers/inventory.router.js")
+const salesRouter = require("./Routers/sale.router.js")
+require("./mongodb")
 
 const app = express();
 app.use(cors());
+app.use(express.json())
+app.use("/inventory",inventoryRouter)
+app.use("/sale",salesRouter)
 
 app.get("/", (req, res) => {
   res.send("Inventory Management")
