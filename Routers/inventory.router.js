@@ -1,7 +1,8 @@
 const express = require("express");
 const inventoryRouter = express.Router();
-// const {} = require("../Controllers/exercise.controller.js");
+const {getInventoryController,createInventoryItemController} = require("../Controllers/inventory.controllers.js");
 
-// inventoryRouter.get("/exercises",getAllExercisesController)
+inventoryRouter.get("/",getInventoryController)
+inventoryRouter.post("/",createInventoryItemController)
 
 module.exports = inventoryRouter;
