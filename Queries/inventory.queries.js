@@ -18,6 +18,28 @@ const createInventoryItem = async (data) => {
     throw error
   }
 }
+const updateInventoryData = async (id,data) => {
+  try {
+    const savedInevntory = await Inventory.findByIdAndUpdate(id,data);
+    if(!savedInevntory){
+      throw new Error("Data not found!!")
+    }
+    return await getInventory();
+  } catch (error) {
+    throw error
+  }
+}
+const deleteInevntoryData = async (id) => {
+  try {
+    const savedInevntory = await Inventory.findByIdAndDelete(id);
+    if(!savedInevntory){
+      throw new Error("Inventory not found!!")
+    }
+    return await getInventory();
+  } catch (error) {
+    throw error
+  }
+}
 
 
-module.exports = { getInventory, createInventoryItem };
+module.exports = { getInventory, createInventoryItem,updateInventoryData,deleteInevntoryData };
